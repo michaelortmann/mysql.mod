@@ -9,9 +9,9 @@ is made especially for Eggdrops.
 ########## Installation ##########
 
 1.  Obtain this package.
-2.  Place it in ~/eggdrop1.6.x/src/mod/
-3.  Decompress it: tar zxvf mysqlx.x.tar.gz
-4.  Go back to your ~/eggdrop1.6.x directory
+2.  Place it in ~/eggdrop-1.9.5/src/mod/
+3.  Decompress it: tar zxvf mysql.mod-x.x.tar.gz
+4.  Go back to your ~/eggdrop-1.9.5 directory
 5.  ./configure (if needed)
 6.  make config
 7.  make
