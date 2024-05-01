@@ -59,3 +59,9 @@ Note: It can be wrong.
 
 mysql_affected_rows
 Returns the number of rows that were changed by the last query.
+
+Website:
+
+  https://www.barkerjr.net/eggdropmodules.html (dead link)
+  http://web.archive.org/web/20120618070557/http://www.barkerjr.net/eggdropmodules.html
+  http://mirror.slackware.hr/sources/mysql.mod.0.6.tar.bz2
