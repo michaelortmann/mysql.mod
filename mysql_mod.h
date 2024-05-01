@@ -1,9 +1,11 @@
 /*
- * Copyright (C) 2003-2006 BarkerJr <http://barkerjr.net>
+ * mysql_mod.h -- part of mysql.mod
+ */
+/*
+ * Copyright (C) 2003 - 2006 BarkerJr <http://barkerjr.net>
+ * Copyright (C) 2024 Michael Ortmann
  *
- * This file is part of MySQL Module.
- *
- * MySQL Module is free software; you can redistribute it and/or
+ * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
  * as published by the Free Software Foundation; either version 2
  * of the License, or (at your option) any later version.
@@ -36,7 +38,7 @@
 EXPORT_SCOPE char *mysql_start();
 static char *mysql_stop();
 static int mysql_expmem();
-static void mysql_report(int *, int *);
+static void mysql_report(int, int *);
 static int tcl_mysql_connect STDVARPROT
 static int tcl_mysql_close STDVARPROT
 static int tcl_mysql_query STDVARPROT

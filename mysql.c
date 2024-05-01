@@ -1,9 +1,11 @@
 /*
- * Copyright (C) 2003, 2004 BarkerJr <http://barkerjr.net>
+ * mysql.c -- part of mysql.mod
+ */
+/*
+ * Copyright (C) 2003 - 2006 BarkerJr <http://barkerjr.net>
+ * Copyright (C) 2024 Michael Ortmann
  *
- * This file is part of MySQL Module.
- *
- * MySQL Module is free software; you can redistribute it and/or
+ * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
  * as published by the Free Software Foundation; either version 2
  * of the License, or (at your option) any later version.
@@ -61,7 +63,7 @@ static tcl_cmds mysql_cmds[] =
 char *mysql_start(Function *global_funcs)
 {
   global = global_funcs;
-  module_register(MODULE_NAME, mysql_table, 0, 6);
+  module_register(MODULE_NAME, mysql_table, 0, 7);
   add_tcl_commands(mysql_cmds);
   return NULL;
 }
@@ -76,7 +78,7 @@ static char *mysql_stop()
 
 static int mysql_expmem() { return mem; }
 
-static void mysql_report(int *idx, int *details)
+static void mysql_report(int idx, int *details)
 {
   if (details)
   {
@@ -169,6 +171,7 @@ static int tcl_mysql_connect STDVAR
   {
     Tcl_Obj *obj = Tcl_NewStringObj("Failed to connect to database: ", -1);
     Tcl_AppendToObj(obj, mysql_error(dbc), -1);
+    mysql_close(dbc);
     Tcl_SetObjResult(irp, obj);
     dbc = NULL;
     freeit(&host);
@@ -372,7 +375,7 @@ static void freeit(char **p)
 {
   if (!*p) return; /* It's pointing to null */
   mem -= strlen(*p) + 1;
-  nfree (*p);
+  nfree(*p);
   *p = NULL;
 }
 
