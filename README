@@ -1,0 +1,61 @@
+MySQL Module for Eggdrop
+  by BarkerJr <http://barkerjr.net>
+  beta tested by David "DrN" Proper <http://rcs.chaotix.net>
+
+This module is designed to be an alternative to installing Tcl modules.  This
+is made especially for Eggdrops.
+
+
+########## Installation ##########
+
+1.  Obtain this package.
+2.  Place it in ~/eggdrop1.6.x/src/mod/
+3.  Decompress it: tar zxvf mysqlx.x.tar.gz
+4.  Go back to your ~/eggdrop1.6.x directory
+5.  ./configure (if needed)
+6.  make config
+7.  make
+8.  make install
+9.  Edit you bot's *.conf file and add the line: loadmodule mysql
+10. Rehash your bot
+
+
+########## Tcl Commands ##########
+
+mysql_connect <database> <hostname> [user] [password] [socket|port]
+Initializes the connection to the database.  If hostname is `localhost', the
+connection will be piped into a socket instead of using a tcp port.  Socket is
+the path to the unix socket, such as /tmp/mysql.sock.
+
+mysql_close
+Closed the current database connection, freeing its memory.
+
+mysql_query <query>
+Executes a query and returns its results in a nested list.  A semi-colon is
+automatically appended to the end of the statement.
+
+mysql_escape [byte] <string>
+Makes a string safe to be used in MySQL.  Adds backslashes before single
+quotes, doubles backslashes, and so on.  Only specify the byte argument if you
+are handling binary data.  Using it incorrectly will crash your bot, or worse.
+
+mysql_errno
+Returns the error code that was last encountered. A list of error codes is
+available at: http://www.mysql.com/doc/en/Error-returns.html
+
+mysql_ping
+Checks whether the connection to the server is working. If it has gone down, an
+automatic reconnection is attempted.
+
+mysql_connectioninfo
+If connected, returns a list of database name, hostname, user, and port/sock.
+
+mysql_insert_id
+Returns the ID from the last insertion.
+
+mysql_connected
+Return whether the module thinks the database is linked (true) or not (false).
+Note: It can be wrong.
+
+mysql_affected_rows
+Returns the number of rows that were changed by the last query.
