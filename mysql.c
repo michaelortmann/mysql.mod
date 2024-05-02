@@ -63,7 +63,7 @@ static tcl_cmds mysql_cmds[] =
 char *mysql_start(Function *global_funcs)
 {
   global = global_funcs;
-  module_register(MODULE_NAME, mysql_table, 0, 7);
+  module_register(MODULE_NAME, mysql_table, 0, 8);
   add_tcl_commands(mysql_cmds);
   return NULL;
 }
