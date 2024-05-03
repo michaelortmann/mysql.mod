@@ -63,7 +63,7 @@ static tcl_cmds mysql_cmds[] =
 char *mysql_start(Function *global_funcs)
 {
   global = global_funcs;
-  module_register(MODULE_NAME, mysql_table, 0, 8);
+  module_register(MODULE_NAME, mysql_table, 0, 9);
   add_tcl_commands(mysql_cmds);
   return NULL;
 }
@@ -80,11 +80,12 @@ static int mysql_expmem() { return mem; }
 
 static void mysql_report(int idx, int *details)
 {
-  if (details)
-  {
+  if (details) {
+    dprintf(idx, "    mysql header version " MYSQL_SERVER_VERSION "\n");
     if (dbc)
       dprintf(idx, "    Connected to %s on %s as %s.\n", database, host, user);
-    else dprintf(idx, "    Disconnected from a database.\n");
+    else
+      dprintf(idx, "    Disconnected from a database.\n");
   }
 }
 
