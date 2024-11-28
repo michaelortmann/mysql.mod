@@ -10,7 +10,7 @@ is made especially for Eggdrops.
 
 1.  Obtain this package.
 2.  Place it in ~/eggdrop-1.8.4/src/mod/
-3.  Decompress it: tar zxvf mysql.mod-0.7.tar.gz
+3.  Decompress it: tar zxvf mysql.mod-0.9.tar.gz
 4.  Go back to your ~/eggdrop-1.8.4 directory
 5.  ./configure (if needed)
 6.  make config
